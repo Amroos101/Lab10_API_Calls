@@ -32,3 +32,32 @@ document.getElementById("xhrBtn").addEventListener("click", function() {
     };
     xhr.send();
 });
+document.getElementById("postForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const title = document.getElementById("postTitle").value;
+    const body = document.getElementById("postBody").value;
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: title,
+            body: body
+        })
+    })
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error("network response was not ok");
+            }
+            return response.json();
+        })
+        .then(function(data) {
+            document.getElementById("postOutput").innerHTML =
+                "post created, new id: " + data.id + ", title: " + data.title;
+        })
+        .catch(function(error) {
+            document.getElementById("postOutput").innerHTML =
+                "<span class='error-msg'>could not create post: " + error.message + "</span>";
+        });
+});
