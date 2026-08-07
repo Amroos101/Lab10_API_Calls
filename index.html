@@ -12,12 +12,20 @@
         <button id="fetchBtn">fetch data with fetch()</button>
         <button id="xhrBtn">detch data with XHR</button>
     </div>
-        <div id="output">results will show here</div>
+    <div id="output">results will show here</div>
     <h2>create a new post (POST)</h2>
     <form id="postForm">
         <input type="text" id="postTitle" placeholder="post title" required>
         <textarea id="postBody" placeholder="post body" required></textarea>
         <button type="submit">Send POST Request</button>
+    </form>
+    <div id="postOutput"></div>
+    <h2>update a post (PUT)</h2>
+    <form id="putForm">
+        <input type="text" id="updateId" placeholder="id of post to update" required>
+        <input type="text" id="updateTitle" placeholder="new title" required>
+        <textarea id="updateBody" placeholder="new body" required></textarea>
+        <button type="submit">send PUT request</button>
     </form>
     </body>
 </html>
