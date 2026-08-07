@@ -29,3 +29,24 @@ button {
 button:hover {
     background-color: #3a5a85;
 }
+#output, #postOutput, #putOutput {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.error-msg {
+    color: red;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+input, textarea {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
