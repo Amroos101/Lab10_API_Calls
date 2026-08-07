@@ -61,3 +61,28 @@ document.getElementById("postForm").addEventListener("submit", function(event) {
                 "<span class='error-msg'>could not create post: " + error.message + "</span>";
         });
 });
+document.getElementById("putForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const id = document.getElementById("updateId").value;
+    const title = document.getElementById("updateTitle").value;
+    const body = document.getElementById("updateBody").value;
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", "https://jsonplaceholder.typicode.com/posts/" + id, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                document.getElementById("putOutput").innerHTML =
+                    "post updated, title: " + data.title + ", body: " + data.body;
+            } else {
+                document.getElementById("putOutput").innerHTML =
+                    "<span class='error-msg'>error updating post, status: " + xhr.status + "</span>";
+            }
+        }
+    };
+    xhr.send(JSON.stringify({
+        title: title,
+        body: body
+    }));
+});
